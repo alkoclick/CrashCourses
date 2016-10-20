@@ -24,20 +24,29 @@ public class CourseSelectionView extends Stage {
 	private final static String TITLE = "Available courses:";
 
 	public CourseSelectionView() {
-		scene = new Scene(mainPane = mainPane(), 600, 500);
+		mainPane = mainPane();
+		
+		initContents();
+		
+		scene = new Scene(mainPane, 600, 500);
 		setScene(scene);
 		show();
 	}
 
 	private BorderPane mainPane() {
 		BorderPane borderPane = new BorderPane();
-		Label titleLabel = new Label(TITLE);
-		titleLabel.setStyle("-fx-font-size: 200%;");
-		borderPane.setTop(titleLabel);
-		borderPane.setCenter(contentsPane());
 		borderPane.setStyle("-fx-background-color: steelblue;");
 
 		return borderPane;
+	}
+	
+	// Separated for clarity and because if you throw this in the initializer above
+	// you may introduce a NPE in the back button assigned to mainPane later
+	private void initContents(){
+		Label titleLabel = new Label(TITLE);
+		titleLabel.setStyle("-fx-font-size: 200%;");
+		mainPane.setTop(titleLabel);
+		mainPane.setCenter(contentsPane());
 	}
 
 	private FlowPane contentsPane() {

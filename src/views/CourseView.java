@@ -56,8 +56,8 @@ public class CourseView extends BorderPane {
 		iconBox.setSpacing(SPACING);
 		iconBox.setPadding(INSETS);
 
-		iconBox.setOnMouseEntered(mouseIn -> setBorder(HOVER_BORDER));
-		iconBox.setOnMouseExited(mouseIn -> setBorder(BORDER));
+		iconBox.setOnMouseEntered(mouseIn -> iconBox.setBorder(HOVER_BORDER));
+		iconBox.setOnMouseExited(mouseIn -> iconBox.setBorder(BORDER));
 
 		return iconBox;
 	}
@@ -101,7 +101,9 @@ public class CourseView extends BorderPane {
 		footerBox.setAlignment(Pos.CENTER);
 
 		Button backButton = new Button("Back");
-		backButton.setOnAction(ae -> this.getScene().setRoot(back));
+		backButton.setOnAction(ae -> {
+			this.getScene().setRoot(back);
+		});
 
 		footerBox.getChildren().add(backButton);
 

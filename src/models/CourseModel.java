@@ -2,7 +2,7 @@ package models;
 
 import javafx.scene.image.Image;
 
-public class CourseModel {
+public class CourseModel implements Comparable<CourseModel>{
 	private String name;
 	private Image thumbNail;
 
@@ -18,5 +18,10 @@ public class CourseModel {
 
 	public Image getThumbNail() {
 		return thumbNail;
+	}
+
+	@Override
+	public int compareTo(CourseModel otherObject) {
+		return this.name.compareTo(otherObject.getName());
 	}
 }
